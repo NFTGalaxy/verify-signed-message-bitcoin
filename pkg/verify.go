@@ -115,3 +115,17 @@ func VerifyWithChain(signedMessage SignedMessage, net *chaincfg.Params) (bool, e
 		return false, fmt.Errorf("unsupported address type '%s'", reflect.TypeOf(address))
 	}
 }
+
+func IsBitcoinTaprootAddressWithMainNet(address string) bool {
+	addressDecode, err := btcutil.DecodeAddress(address, &chaincfg.MainNetParams)
+	if err != nil {
+		return false
+	}
+
+	switch addressDecode.(type) {
+	case *btcutil.AddressTaproot:
+		return true
+	default:
+		return false
+	}
+}
