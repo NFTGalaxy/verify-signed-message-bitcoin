@@ -1,4 +1,4 @@
-module github.com/bitonicnl/verify-signed-message-bitcoin
+module github.com/bitonicnl/verify-signed-message
 
 go 1.18
 
